@@ -18,4 +18,11 @@
 <% }) %>
 </tr>
 </table>
+<script>
+  document.querySelectorAll('video').forEach(function(v) {
+    v.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+  });
+</script>
 </body></html>
