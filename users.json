@@ -1,0 +1,14 @@
+[
+  {
+    "email": "admin@site.com",
+    "password": "$2a$10$x1vb431vc84hFTl/kwSO5OAo6RfkEvmKcPieq1HKKysWlG7i..JGK",
+    "statut": "actif",
+    "role": "admin"
+  },
+  {
+    "email": "ricard65@gmail.com",
+    "password": "$2a$10$x1vb431vc84hFTl/kwSO5OAo6RfkEvmKcPieq1HKKysWlG7i..JGK",
+    "statut": "actif",
+    "role": "joueur"
+  }
+]

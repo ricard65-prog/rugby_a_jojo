@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><body>
+<h2>Bienvenue <%= email %> ! </h2>
+<a href="/logout">Déconnexion</a>
+<% if(isAdmin){ %> - <a href="/admin/users">Gestion utilisateurs</a> - <a href="/admin/videos">Gestion vidéos</a><% } %>
+<h3>Terrain de rugby</h3>
+<table border="1">
+<tr>
+<% Object.keys(videosByZone).forEach(function(zone){ %>
+  <td valign="top"><b><%= zone %></b><br>
+    <% videosByZone[zone].forEach(function(v){ %>
+      <div>
+        <p><b><%= v.titre %></b><br><%= v.commentaire %></p>
+        <video src="<%= v.url %>" width="200" controls controlsList="nodownload"></video>
+      </div>
+      <hr>
+    <% }) %>
+  </td>
+<% }) %>
+</tr>
+</table>
+</body></html>

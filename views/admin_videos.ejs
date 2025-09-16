@@ -1,0 +1,39 @@
+<!DOCTYPE html><html><body>
+<h2>Gestion des vidéos</h2>
+<a href="/videos">Page vidéos</a>
+<h3>Ajouter une vidéo</h3>
+<form method="POST" action="/admin/videos/add">
+  <select name="zone" required>
+    <option>en-but gauche</option><option>22m gauche</option><option>40m gauche</option>
+    <option>50m</option><option>40m droit</option><option>22m droit</option><option>en-but droit</option>
+  </select>
+  <input name="titre" placeholder="Titre" required>
+  <input name="commentaire" placeholder="Commentaire" required>
+  <input name="url" placeholder="URL .mp4" required>
+  <button type="submit">Ajouter</button>
+</form>
+<h3>Vidéos existantes</h3>
+<table border="1">
+<tr><th>Zone</th><th>Titre</th><th>Commentaire</th><th>URL</th><th>Actions</th></tr>
+<% videos.forEach(function(v){ %>
+<tr>
+  <form method="POST" action="/admin/videos/edit">
+    <input type="hidden" name="oldUrl" value="<%= v.url %>"/>
+    <td>
+      <select name="zone"><option <%= v.zone === "en-but gauche" ? "selected" : "" %> >en-but gauche</option><option <%= v.zone === "22m gauche" ? "selected" : "" %> >22m gauche</option><option <%= v.zone === "40m gauche" ? "selected" : "" %> >40m gauche</option><option <%= v.zone === "50m" ? "selected" : "" %> >50m</option><option <%= v.zone === "40m droit" ? "selected" : "" %> >40m droit</option><option <%= v.zone === "22m droit" ? "selected" : "" %> >22m droit</option><option <%= v.zone === "en-but droit" ? "selected" : "" %> >en-but droit</option></select>
+    </td>
+    <td><input name="titre" value="<%= v.titre %>"></td>
+    <td><input name="commentaire" value="<%= v.commentaire %>"></td>
+    <td><input name="url" value="<%= v.url %>"></td>
+    <td>
+      <button type="submit">Éditer</button>
+      </form>
+      <form method="POST" action="/admin/videos/delete" style="display:inline">
+        <input type="hidden" name="url" value="<%= v.url %>"/>
+        <button type="submit">Supprimer</button>
+      </form>
+    </td>
+</tr>
+<% }) %>
+</table>
+</body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><body>
+<h2>Gestion des utilisateurs</h2>
+<a href="/videos">Page vidéos</a>
+<table border="1" cellpadding="5">
+<tr><th>Email</th><th>Statut</th><th>Rôle</th><th>Action</th></tr>
+<% users.forEach(function(u){ %>
+  <tr>
+    <td><%= u.email %></td>
+    <td><%= u.statut %></td>
+    <td><%= u.role %></td>
+    <td>
+      <form method="POST" action="/admin/user/toggle" style="display:inline">
+        <input type="hidden" name="email" value="<%= u.email %>">
+        <button type="submit"><%= u.statut === 'actif' ? 'Désactiver' : 'Activer' %></button>
+      </form>
+    </td>
+  </tr>
+<% }) %>
+</table>
+</body></html>

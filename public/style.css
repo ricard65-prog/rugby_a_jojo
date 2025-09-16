@@ -1,0 +1,4 @@
+body { font-family: Arial, sans-serif; background: #ececec; margin: 2em; }
+h2 { color: #244260; }
+input, button, select { margin: 4px; }
+video { background: #222; margin: 3px; border-radius: 4px; }
