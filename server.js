@@ -53,11 +53,14 @@ app.post('/login', (req, res) => {
     const user = users.find(u => u.email === email);
 
     if (!user || !bcrypt.compareSync(password, user.password)) {
+        console.log('Email ou mot de passe incorrect :', email);
         return res.render('login', { error: 'Email ou mot de passe incorrect.' });
     }
     if (user.statut !== "actif") {
+        console.log('Compte inactif. Contactez l administrateur:', email);
         return res.render('login', { error: "Compte inactif. Contactez l'administrateur." });
     }
+    console.log('Compte autorisé :', email);
     req.session.email = user.email;
     req.session.role = user.role;
     req.session.statut = user.statut;
@@ -86,7 +89,7 @@ app.post('/register', (req, res) => {
 app.get('/videos', isAuthenticated, (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
     // Grouper les vidéos par zone pour l’affichage rugby
-    const zones = ["en-but gauche", "22m gauche", "40m gauche", "50m", "40m droit", "22m droit", "en-but droit"];
+    const zones = ["gauche_en-but", "gauche_22m", "gauche_40m", "centre_50m", "droit_40m", "droit_22m", "droit_en-but"];
     const videosByZone = {};
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
@@ -104,6 +107,13 @@ app.post('/admin/user/toggle', isAuthenticated, isAdmin, (req, res) => {
     const users = readJSON(USERS_FILE);
     const user = users.find(u => u.email === email);
     if (user) user.statut = (user.statut === "actif" ? "inactif" : "actif");
+    writeJSON(USERS_FILE, users);
+    res.redirect('/admin/users');
+});
+app.post('/admin/user/delete', isAuthenticated, isAdmin, (req, res) => {
+    const { email } = req.body;
+    let users = readJSON(USERS_FILE);
+    users = users.filter(u => u.email !== email);
     writeJSON(USERS_FILE, users);
     res.redirect('/admin/users');
 });

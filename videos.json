@@ -1,14 +1,14 @@
 [
   {
-    "zone": "en-but gauche",
-    "titre": "test",
-    "commentaire": "ccc",
+    "zone": "gauche_en-but",
+    "titre": "Titre video 1",
+    "commentaire": "Petit commentairecc",
     "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
   },
   {
-    "zone": "en-but gauche",
-    "titre": "essa",
-    "commentaire": "test",
+    "zone": "gauche_en-but",
+    "titre": "Titre video 2",
+    "commentaire": "Petit commentaire",
     "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
   }
 ]

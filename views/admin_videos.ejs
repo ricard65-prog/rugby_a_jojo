@@ -1,39 +1,143 @@
-<!DOCTYPE html><html><body>
-<h2>Gestion des vidéos</h2>
-<a href="/videos">Page vidéos</a>
-<h3>Ajouter une vidéo</h3>
-<form method="POST" action="/admin/videos/add">
-  <select name="zone" required>
-    <option>en-but gauche</option><option>22m gauche</option><option>40m gauche</option>
-    <option>50m</option><option>40m droit</option><option>22m droit</option><option>en-but droit</option>
-  </select>
-  <input name="titre" placeholder="Titre" required>
-  <input name="commentaire" placeholder="Commentaire" required>
-  <input name="url" placeholder="URL .mp4" required>
-  <button type="submit">Ajouter</button>
-</form>
-<h3>Vidéos existantes</h3>
-<table border="1">
-<tr><th>Zone</th><th>Titre</th><th>Commentaire</th><th>URL</th><th>Actions</th></tr>
-<% videos.forEach(function(v){ %>
-<tr>
-  <form method="POST" action="/admin/videos/edit">
-    <input type="hidden" name="oldUrl" value="<%= v.url %>"/>
-    <td>
-      <select name="zone"><option <%= v.zone === "en-but gauche" ? "selected" : "" %> >en-but gauche</option><option <%= v.zone === "22m gauche" ? "selected" : "" %> >22m gauche</option><option <%= v.zone === "40m gauche" ? "selected" : "" %> >40m gauche</option><option <%= v.zone === "50m" ? "selected" : "" %> >50m</option><option <%= v.zone === "40m droit" ? "selected" : "" %> >40m droit</option><option <%= v.zone === "22m droit" ? "selected" : "" %> >22m droit</option><option <%= v.zone === "en-but droit" ? "selected" : "" %> >en-but droit</option></select>
-    </td>
-    <td><input name="titre" value="<%= v.titre %>"></td>
-    <td><input name="commentaire" value="<%= v.commentaire %>"></td>
-    <td><input name="url" value="<%= v.url %>"></td>
-    <td>
-      <button type="submit">Éditer</button>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Rugby à Jojo !</title>
+  <link rel="stylesheet" href="/main.css" />
+  <link rel="stylesheet" href="/users.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+
+<body class="min-h-screen bg-background">
+  <!-- Navigation Header -->
+  <nav class="bg-surface shadow-subtle border-b border-border-light sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <svg class="h-10 w-10 text-primary" viewBox="0 0 40 40" fill="currentColor">
+              <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2" />
+              <ellipse cx="20" cy="20" rx="12" ry="8" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path d="M8 20 L32 20" stroke="currentColor" stroke-width="1" />
+              <circle cx="20" cy="20" r="3" fill="currentColor" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <h1 class="text-xl font-bold text-primary font-accent">Rugby à Jojo</h1>
+            <p class="text-xs text-text-secondary">Bienvenue
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="/videos"
+              class="text-text-secondary hover:text-primary transition-smooth px-3 py-2 rounded-md text-sm">Vidéos</a>
+            <a href="/admin/users"
+              class="text-text-secondary hover:text-primary transition-smooth px-3 py-2 rounded-md text-sm">Gestion
+              des utilisateurs</a>
+            <a href="/admin/videos"
+              class="text-primary font-semibold px-3 py-2 rounded-md text-sm bg-primary-50">Gestion des
+              vidéos</a>
+          </div>
+        </div>
+
+        <!-- Admin Profile & Logout -->
+        <div class="flex items-center space-x-4">
+          <div class="hidden md:flex items-center space-x-2">
+            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="text-sm">
+              <p class="font-semibold text-primary">
+
+              </p>
+            </div>
+          </div>
+          <a href="/logout"><svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Header -->
+  <div class="text-center mb-8">
+    <h1 class="text-3xl font-bold text-primary font-accent mb-4">Gestion des vidéos</h1>
+  </div>
+  <section class="mt-8">
+    <div class="card">
+       <h2 class="text-xl font-semibold text-primary">Ajouter une vidéo</h2>
+      <form method="POST" action="/admin/videos/add">
+        <select name="zone" required>
+          <option>gauche_en-but</option>
+          <option>gauche_22m</option>
+          <option>gauche_40m</option>
+          <option>centre_50m</option>
+          <option>droit_40m</option>
+          <option>droit_22m</option>
+          <option>droit_en-but</option>
+        </select>
+        <input name="titre" placeholder="Titre" required>
+        <input name="commentaire" placeholder="Commentaire" required>
+        <input name="url" placeholder="URL .mp4" required>
+        <button type="submit" class="btn-primary text-sm px-4 py-2">Ajouter</button>
       </form>
-      <form method="POST" action="/admin/videos/delete" style="display:inline">
-        <input type="hidden" name="url" value="<%= v.url %>"/>
-        <button type="submit">Supprimer</button>
-      </form>
-    </td>
-</tr>
-<% }) %>
-</table>
-</body></html>
+    </div>
+  </section>
+  <!-- Gestion des vidéos -->
+  <section class="mt-8">
+    <div class="card">
+      <h2 class="text-xl font-semibold text-primary">Vidéos existantes</h2>
+      <table border="1">
+        <tr>
+          <th>Zone</th>
+          <th>Titre</th>
+          <th>Commentaire</th>
+          <th>URL</th>
+          <th>Actions</th>
+        </tr>
+        <% videos.forEach(function(v){ %>
+          <tr>
+            <form method="POST" action="/admin/videos/edit">
+              <input type="hidden" name="oldUrl" value="<%= v.url %>" />
+              <td>
+                <select name="zone">
+                  <option <%=v.zone==="gauche_en-but" ? "selected" : "" %> >gauche_en-but</option>
+                  <option <%=v.zone==="gauche_22m" ? "selected" : "" %> >gauche_22m</option>
+                  <option <%=v.zone==="gauche_40m" ? "selected" : "" %> >gauche_40m</option>
+                  <option <%=v.zone==="centre_50m" ? "selected" : "" %> >centre_50m</option>
+                  <option <%=v.zone==="droit_40m" ? "selected" : "" %> >droit_40m</option>
+                  <option <%=v.zone==="droit_22m" ? "selected" : "" %> >droit_22m</option>
+                  <option <%=v.zone==="droit_en-but" ? "selected" : "" %> >droit_en-but</option>
+                </select>
+              </td>
+              <td><input name="titre" value="<%= v.titre %>"></td>
+              <td><input name="commentaire" value="<%= v.commentaire %>"></td>
+              <td><input name="url" value="<%= v.url %>"></td>
+              <td>
+                <button type="submit" class="btn-sav btn-primary text-sm px-4 py-2">Sauvegarder</button>
+            </form>
+            <form method="POST" action="/admin/videos/delete" style="display:inline">
+              <input type="hidden" name="url" value="<%= v.url %>" />
+              <button type="submit" class="btn-del btn-primary text-sm px-4 py-2">Supprimer</button>
+            </form>
+            </td>
+          </tr>
+          <% }) %>
+      </table>
+    </div>
+  </section>
+</body>
+
+</html>

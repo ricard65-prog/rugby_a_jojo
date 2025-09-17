@@ -1,10 +1,156 @@
-<!DOCTYPE html><html><body>
-<h2>Créer un compte</h2>
-<form method="POST">
-  <input name="email" type="email" placeholder="Email" required><br>
-  <input name="password" type="password" placeholder="Mot de passe" required><br>
-  <button type="submit">Créer</button>
-</form>
-<p style="color:red;"><%= error || '' %></p>
-<a href="/login">Retour connexion</a>
-</body></html>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Rugby à Jojo !</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #b5fcbc, #4a7c59);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /*color: white;*/
+    }
+
+    .redirect-container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .logo {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .loading-text {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid #ffffff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .redirect-info {
+      font-size: 0.9em;
+      opacity: 0.7;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-background">
+
+  <!-- Main Content Container -->
+  <div class="relative z-10 w-full max-w-md mx-auto px-4">
+    <!-- Welcome Message -->
+    <div class="text-center mb-8">
+      <div class="mb-4">
+        <!-- Logo -->
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-full mb-4">
+          <svg class="w-8 h-8 text-white animate-rugby-roll" viewBox="0 0 24 24" fill="currentColor">
+            <ellipse cx="12" cy="12" rx="8" ry="6" fill="currentColor" />
+            <path d="M4 12h16M12 4v16" stroke="white" stroke-width="1" />
+          </svg>
+        </div>
+      </div>
+      <h1 class="text-3xl font-bold text-primary font-accent mb-2">Bienvenue au Rugby à Jojo !</h1>
+      <p class="text-text-secondary text-lg">Demandez l'accès à la plateforme.</p>
+    </div>
+
+    <!-- Login Form Card -->
+    <div class="card p-8 shadow-rugby-card">
+      <form method="POST" id="registrationForm" class="space-y-6">
+        <!-- Email -->
+        <div class="relative">
+          <input type="email" id="email" name="email" class="input-field peer placeholder-transparent"
+            placeholder="Adresse email" required />
+          <label for="email"
+            class="absolute left-4 -top-2.5 bg-surface px-2 text-sm text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary">
+            Adresse Email *
+          </label>
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+            <svg class="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="relative">
+          <input type="password" id="password" name="password" class="input-field peer placeholder-transparent"
+            placeholder="Mot de passe" required />
+          <label for="password"
+            class="absolute left-4 -top-2.5 bg-surface px-2 text-sm text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary">
+            Mot de passe *
+          </label>
+        </div>
+
+        <div class="flex justify-center">
+          <button type="submit" id="submitRequest" class="btn-primary flex items-center space-x-2">
+            <span>Soumettre la Demande</span>
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg>
+          </button>
+        </div>
+        <% if(error){ %>
+          <div style="color:red">
+            <%= error %>
+          </div>
+          <% } %>
+
+      </form>
+    </div>
+
+    <!-- Already Have Account -->
+    <div class="mt-8 text-center">
+      <p class="text-text-secondary mb-4">Vous avez déjà un compte ?</p>
+      <a href="/login" class="btn-secondary inline-flex items-center space-x-2">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14" />
+        </svg>
+        <span>Retour à la Connexion</span>
+      </a>
+    </div>
+  </div>
+</body>
+
+</html>

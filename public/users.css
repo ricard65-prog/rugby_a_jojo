@@ -1,0 +1,44 @@
+
+.btn-primary{
+  background-color: rgb(50 130 246 / var(--tw-bg-opacity, 1));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.btn-primary:hover{
+  background-color: rgb(51 192 255 / var(--tw-bg-opacity, 1));
+}
+
+.btn-primary:focus{
+  --tw-ring-color: rgb(50 130 246 / var(--tw-ring-opacity, 1));
+
+}
+.usertab{
+  width: 400px;
+}
+.usertab2{
+  text-align: -webkit-center;
+}
+.btn-sav{
+  background-color: rgb(27 94 32 / var(--tw-bg-opacity, 1));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.btn-sav:hover{
+  background-color: rgb(56 142 60 / var(--tw-bg-opacity, 1));
+}
+
+.btn-sav:focus{
+   --tw-ring-color: rgb(76 175 80 / var(--tw-ring-opacity, 1));
+}
+.btn-del{
+  background-color: rgb(255 0 0 / var(--tw-bg-opacity, 1));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.btn-del:hover{
+  background-color: rgb(255 140 140 / var(--tw-bg-opacity, 1));
+}
+
+.btn-del:focus{
+   --tw-ring-color: rgb(255 0 0 / var(--tw-ring-opacity, 1));
+}
