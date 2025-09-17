@@ -66,6 +66,21 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             </svg></a>
+
+            <!-- Mobile menu button -->
+          <button type="button" id="mobileMenuButton"
+            class="text-text-secondary hover:text-primary focus:outline-none focus:text-primary transition-smooth">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <!-- Mobile menu content -->
+          <div id="mobileMenu" class="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg hidden z-50">
+            <a href="/videos" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Vidéos</a>
+            <a href="/admin/users" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Gestion
+              utilisateurs</a>
+            <a href="/admin/videos" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Gestion vidéos</a>
+          </div>
         </div>
       </div>
     </div>
@@ -112,6 +127,19 @@
         <% }) %>
     </div>
   </div>
+  <script>
+    /* Mobile menu toggle */
+    const menuBtn = document.getElementById('mobileMenuButton');
+    const menu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+    // Optionnel : fermer le menu si on clique ailleurs
+    document.addEventListener('click', (e) => {
+      if (!menuBtn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+  </script>
 </body>
-
 </html>
