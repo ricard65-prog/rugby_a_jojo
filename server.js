@@ -89,7 +89,7 @@ app.post('/register', (req, res) => {
 app.get('/videos', isAuthenticated, (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
     // Grouper les vidéos par zone pour l’affichage rugby
-    const zones = ["gauche_en-but", "gauche_22m", "gauche_40m", "centre_50m", "droit_40m", "droit_22m", "droit_en-but"];
+    const zones = ["zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque"];
     const videosByZone = {};
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);

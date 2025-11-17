@@ -1,14 +1,20 @@
 [
   {
-    "zone": "gauche_en-but",
+    "zone": "zoneDegagement",
     "titre": "Titre video 1",
     "commentaire": "Petit commentairecc",
     "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
   },
   {
-    "zone": "gauche_en-but",
+    "zone": "zoneDegagement",
     "titre": "Titre video 2",
     "commentaire": "Petit commentaire",
+    "url": "https://drive.google.com/file/d/1jC_o09qh0bB1M3f8PHTh4GXX59DSGoZN/preview"
+  },
+  {
+    "zone": "zoneNeutre",
+    "titre": "fgdf",
+    "commentaire": "gfgg",
     "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
   }
 ]

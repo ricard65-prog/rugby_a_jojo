@@ -100,13 +100,74 @@
       <span class="text-sm text-green-700 font-medium">Vidéos protégées - Visionnage uniquement</span>
     </div>
   </div>
-
-  
-    <!-- Insérer une image -->
-    <img src="fondTerrain.bmp" style="width:50%;display: block;margin: auto;">
-
-
-<script>
+  <!-- Rugby Field Container -->
+  <div class="relative bg-surface rounded-xl shadow-rugby border border-border-light p-8 mb-8">
+    <table border="1">
+      <tr>
+        <td valign="top" class="zoneDegagement">
+          <div class="titrezone">Zone de dégagement</div><br>
+          <% videosByZone["zoneDegagement"].forEach(function(v){ %>
+            <div>
+              <p><b>
+                  <%= v.titre %>
+                </b><br>
+                <%= v.commentaire %>
+              </p>
+              <video src="<%= v.url %>" width="200" controls controlsList="nodownload"></video>
+            </div>
+            <hr>
+            <% }) %>
+        </td>
+        </tr><tr>
+        <td valign="top" class="zoneNeutre">
+          <div class="titrezone">Zone neutre</div><br>
+          <% videosByZone["zoneNeutre"].forEach(function(v){ %>
+            <div>
+              <p><b>
+                  <%= v.titre %>
+                </b><br>
+                <%= v.commentaire %>
+              </p>
+              <video src="<%= v.url %>" width="200" controls controlsList="nodownload"></video>
+            </div>
+            <hr>
+            <% }) %>
+        </td>
+        </tr><tr>
+        <td valign="top" class="zoneConstruction">
+          <div class="titrezone">Zone de construction</div><br>
+          <% videosByZone["zoneConstruction"].forEach(function(v){ %>
+            <div>
+              <p><b>
+                  <%= v.titre %>
+                </b><br>
+                <%= v.commentaire %>
+              </p>
+              <video src="<%= v.url %>" width="200" controls controlsList="nodownload"></video>
+            </div>
+            <hr>
+            <% }) %>
+        </td>
+        </tr><tr>
+        <td valign="top" class="zoneMarque">
+          <div class="titrezone">Zone de marque</div><br>
+          <% videosByZone["zoneMarque"].forEach(function(v){ %>
+            <div>
+              <p><b>
+                  <%= v.titre %>
+                </b><br>
+                <%= v.commentaire %>
+              </p>
+              <video src="<%= v.url %>" width="200" controls controlsList="nodownload"></video>
+            </div>
+            <hr>
+            <% }) %>
+        </td>
+       </tr>
+      </tr>
+    </table>
+  </div>
+  <script>
     document.querySelectorAll('video').forEach(function (v) {
       v.addEventListener('contextmenu', function (e) {
         e.preventDefault();

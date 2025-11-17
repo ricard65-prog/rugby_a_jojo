@@ -95,13 +95,10 @@
        <h2 class="text-xl font-semibold text-primary">Ajouter une vidéo</h2>
       <form method="POST" action="/admin/videos/add">
         <select name="zone" required>
-          <option>gauche_en-but</option>
-          <option>gauche_22m</option>
-          <option>gauche_40m</option>
-          <option>centre_50m</option>
-          <option>droit_40m</option>
-          <option>droit_22m</option>
-          <option>droit_en-but</option>
+          <option>zoneDegagement</option>
+          <option>zoneNeutre</option>
+          <option>zoneConstruction</option>
+          <option>zoneMarque</option>
         </select>
         <input name="titre" placeholder="Titre" required>
         <input name="commentaire" placeholder="Commentaire" required>
@@ -128,13 +125,10 @@
               <input type="hidden" name="oldUrl" value="<%= v.url %>" />
               <td>
                 <select name="zone">
-                  <option <%=v.zone==="gauche_en-but" ? "selected" : "" %> >gauche_en-but</option>
-                  <option <%=v.zone==="gauche_22m" ? "selected" : "" %> >gauche_22m</option>
-                  <option <%=v.zone==="gauche_40m" ? "selected" : "" %> >gauche_40m</option>
-                  <option <%=v.zone==="centre_50m" ? "selected" : "" %> >centre_50m</option>
-                  <option <%=v.zone==="droit_40m" ? "selected" : "" %> >droit_40m</option>
-                  <option <%=v.zone==="droit_22m" ? "selected" : "" %> >droit_22m</option>
-                  <option <%=v.zone==="droit_en-but" ? "selected" : "" %> >droit_en-but</option>
+                  <option <%=v.zone==="zoneDegagement" ? "selected" : "" %> >zoneDegagement</option>
+                  <option <%=v.zone==="zoneNeutre" ? "selected" : "" %> >zoneNeutre</option>
+                  <option <%=v.zone==="zoneConstruction" ? "selected" : "" %> >zoneConstruction</option>
+                  <option <%=v.zone==="zoneMarque" ? "selected" : "" %> >zoneMarque</option>
                 </select>
               </td>
               <td><input name="titre" value="<%= v.titre %>"></td>

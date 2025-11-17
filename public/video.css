@@ -29,26 +29,17 @@ td {
   /* 1 */
   width: 220px;
 }
-.gauche_en-but{
+.zoneDegagement{
   background-color: #6c6d34;
 }
-.gauche_22m{
+.zoneNeutre{
   background-color: #6f8824;
 }
-.gauche_40m{
+.zoneConstruction{
   background-color: #2d886f;
 }
-.centre_50m{
+.zoneMarque{
   background-color: #388c3c;
-}
-.droit_40m{
-  background-color: #2d886f;
-}
-.droit_22m{
-  background-color: #6f8824;
-}
-.droit_en-but{
-  background-color: #6c6d34;
 }
 .titrezone{
   font-weight: bold;
