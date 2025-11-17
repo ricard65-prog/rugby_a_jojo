@@ -89,13 +89,27 @@ app.post('/register', (req, res) => {
 app.get('/videos', isAuthenticated, (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
     // Grouper les vidéos par zone pour l’affichage rugby
-    const zones = ["zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque"];
+    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque","zoneEnbutAdverse"];
     const videosByZone = {};
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
     });
     res.render('videos', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
 });
+
+
+// Routes pour chaque zone
+app.get('/zoneDegagement', (req, res) => {
+    const videos = readJSON(VIDEOS_FILE);
+    // Grouper les vidéos par zone pour l’affichage rugby
+    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque","zoneEnbutAdverse"];
+    const videosByZone = {};
+    zones.forEach(zone => {
+        videosByZone[zone] = videos.filter(v => v.zone === zone);
+    });
+    res.render('zoneDegagement', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+});
+
 
 // --- Section Admin : gestion des comptes ---
 app.get('/admin/users', isAuthenticated, isAdmin, (req, res) => {
@@ -147,5 +161,7 @@ app.post('/admin/videos/edit', isAuthenticated, isAdmin, (req, res) => {
     }
     res.redirect('/admin/videos');
 });
+
+
 
 app.listen(PORT, () => console.log(`Serveur lancé sur http://localhost:${PORT}`));

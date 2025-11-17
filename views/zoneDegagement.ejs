@@ -28,7 +28,7 @@
           </div>
           <div class="ml-3">
             <h1 class="text-xl font-bold text-primary font-accent">Rugby à Jojo</h1>
-            <p class="text-xs text-text-secondary">Bienvenue <%= email %>
+            <p class="text-xs text-text-secondary">Bienvenue 
             </p>
           </div>
         </div>
@@ -59,7 +59,7 @@
             </div>
             <div class="text-sm">
               <p class="font-semibold text-primary">
-                <%= email %>
+              
               </p>
             </div>
           </div>
@@ -101,6 +101,7 @@
       <span class="text-sm text-green-700 font-medium">Vidéos protégées - Visionnage uniquement</span>
     </div>
   </div>
+ 
   <!-- Rugby Field Container -->
   <div class="relative bg-surface rounded-xl shadow-rugby border border-border-light p-8 mb-8">
     <table border="1">
@@ -119,11 +120,10 @@
             <hr>
             <% }) %>
         </td>
-        </tr>
-      </tr>
+       </tr>
     </table>
   </div>
-  <script>
+    <script>
     document.querySelectorAll('video').forEach(function (v) {
       v.addEventListener('contextmenu', function (e) {
         e.preventDefault();

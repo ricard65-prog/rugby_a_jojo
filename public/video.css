@@ -29,6 +29,9 @@ td {
   /* 1 */
   width: 220px;
 }
+.zoneEnbutCAL{
+  background-color: #6c6d39;
+}
 .zoneDegagement{
   background-color: #6c6d34;
 }
@@ -40,6 +43,9 @@ td {
 }
 .zoneMarque{
   background-color: #388c3c;
+}
+.zoneEnbutAdverse{
+  background-color: #52c058;
 }
 .titrezone{
   font-weight: bold;
@@ -72,7 +78,9 @@ td {
         }
 
         /* Position des 4 boutons */
-        .btn1 { top: 0; background-color: rgba(255, 0, 0, 0.3); }
-        .btn2 { top: 25%; background-color: rgba(0, 255, 0, 0.3); }
-        .btn3 { top: 50%; background-color: rgba(0, 0, 255, 0.3); }
-        .btn4 { top: 75%; background-color: rgba(255, 255, 0, 0.3); }
+        .zoneEnbutAdverse { top: 0%; height: 55px; background-color: rgba(5, 204, 5, 0.15); }     
+        .zoneMarque { top: 13%; height: 67px; background-color: rgba(5, 204, 5, 0.3); }
+        .zoneConstruction { top: 29%; height: 60px; background-color: rgba(5, 204, 5, 0.45); }
+        .zoneNeutre { top: 43%; height: 63px; background-color: rgba(5, 204, 5, 0.5); }
+        .zoneDegagement { top: 58%; height: 127px; background-color: rgba(5, 204, 5, 0.45); }
+        .zoneEnbutCAL { top: 88%; height: 50px; background-color: rgba(5, 204, 5, 0.2); }

@@ -95,10 +95,12 @@
        <h2 class="text-xl font-semibold text-primary">Ajouter une vidéo</h2>
       <form method="POST" action="/admin/videos/add">
         <select name="zone" required>
+          <option>zoneEnbutCAL</option>
           <option>zoneDegagement</option>
           <option>zoneNeutre</option>
           <option>zoneConstruction</option>
           <option>zoneMarque</option>
+          <option>zoneEnbutAdverse</option>
         </select>
         <input name="titre" placeholder="Titre" required>
         <input name="commentaire" placeholder="Commentaire" required>
@@ -125,10 +127,12 @@
               <input type="hidden" name="oldUrl" value="<%= v.url %>" />
               <td>
                 <select name="zone">
+                  <option <%=v.zone==="zoneEnbutCAL" ? "selected" : "" %> >zoneEnbutCAL</option>
                   <option <%=v.zone==="zoneDegagement" ? "selected" : "" %> >zoneDegagement</option>
                   <option <%=v.zone==="zoneNeutre" ? "selected" : "" %> >zoneNeutre</option>
                   <option <%=v.zone==="zoneConstruction" ? "selected" : "" %> >zoneConstruction</option>
                   <option <%=v.zone==="zoneMarque" ? "selected" : "" %> >zoneMarque</option>
+                  <option <%=v.zone==="zoneEnbutAdverse" ? "selected" : "" %> >zoneEnbutAdverse</option>
                 </select>
               </td>
               <td><input name="titre" value="<%= v.titre %>"></td>
