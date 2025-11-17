@@ -46,3 +46,33 @@ td {
   text-align: center;
   color: white;
 }
+
+
+.image-container {
+            position: relative;
+            width: 500px; /* largeur de l'image */
+        }
+
+        .image-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .zone-btn {
+            position: absolute;
+            width: 100%;
+            height: 25%; /* 4 zones = 25% chacune */
+            left: 0;
+            background-color: rgba(0, 0, 255, 0.2); /* couleur semi-transparente */
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: white;
+        }
+
+        /* Position des 4 boutons */
+        .btn1 { top: 0; background-color: rgba(255, 0, 0, 0.3); }
+        .btn2 { top: 25%; background-color: rgba(0, 255, 0, 0.3); }
+        .btn3 { top: 50%; background-color: rgba(0, 0, 255, 0.3); }
+        .btn4 { top: 75%; background-color: rgba(255, 255, 0, 0.3); }
