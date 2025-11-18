@@ -36,7 +36,7 @@
         <!-- Navigation Links -->
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
-            <a href="/admin/videos"
+            <a href="/terrain"
               class="text-primary font-semibold px-3 py-2 rounded-md text-sm bg-primary-50">Vidéos</a>
             <a href="/admin/users"
               class="text-text-secondary hover:text-primary transition-smooth px-3 py-2 rounded-md text-sm">Gestion
@@ -77,7 +77,7 @@
           </button>
           <!-- Mobile menu content -->
           <div id="mobileMenu" class="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg hidden z-50">
-            <a href="/videos" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Vidéos</a>
+            <a href="/terrain" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Vidéos</a>
             <a href="/admin/users" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Gestion
               utilisateurs</a>
             <a href="/admin/videos" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Gestion vidéos</a>
@@ -106,16 +106,15 @@
   <div class="relative bg-surface rounded-xl shadow-rugby border border-border-light p-8 mb-8">
     <table border="1">
       <tr>
-        <td valign="top" class="zoneDegagement">
-          <div class="titrezone">Zone de dégagement</div><br>
+        <td valign="top">
           <% videosByZone["zoneDegagement"].forEach(function(v){ %>
-            <div>
+            <div class="zoneVideo">
               <p><b>
                   <%= v.titre %>
                 </b><br>
                 <%= v.commentaire %>
               </p>
-              <video src="<%= v.url %>" width="200" controls controlsList="nodownload"></video>
+              <video src="/videos/<%= v.url %>" width="100%" controls controlsList="nodownload"></video>
             </div>
             <hr>
             <% }) %>

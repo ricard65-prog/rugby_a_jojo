@@ -8,6 +8,7 @@ table {
   /* 3 */
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 }
 th {
   font-weight: bold;
@@ -29,6 +30,8 @@ td {
   /* 1 */
   width: 220px;
 }
+
+
 .zoneEnbutCAL{
   background-color: #6c6d39;
 }
@@ -47,6 +50,12 @@ td {
 .zoneEnbutAdverse{
   background-color: #52c058;
 }
+
+.zoneVideo{
+  background-color: #52c058;
+  margin-bottom: 10px;
+}
+
 .titrezone{
   font-weight: bold;
   text-align: center;
@@ -56,7 +65,7 @@ td {
 
 .image-container {
             position: relative;
-            width: 500px; /* largeur de l'image */
+            width: 100%; /* largeur de l'image */
               margin-left: auto;
   margin-right: auto;
         }

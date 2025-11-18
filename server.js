@@ -64,7 +64,7 @@ app.post('/login', (req, res) => {
     req.session.email = user.email;
     req.session.role = user.role;
     req.session.statut = user.statut;
-    return res.redirect('/videos');
+    return res.redirect('/terrain');
 });
 
 app.get('/logout', (req, res) => {
@@ -86,17 +86,6 @@ app.post('/register', (req, res) => {
 });
 
 // --- Page de vidéos (joueur + admin) ---
-app.get('/videos', isAuthenticated, (req, res) => {
-    const videos = readJSON(VIDEOS_FILE);
-    // Grouper les vidéos par zone pour l’affichage rugby
-    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque","zoneEnbutAdverse"];
-    const videosByZone = {};
-    zones.forEach(zone => {
-        videosByZone[zone] = videos.filter(v => v.zone === zone);
-    });
-    res.render('videos', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
-});
-
 
 // Routes pour chaque zone
 app.get('/zoneDegagement', (req, res) => {
@@ -109,7 +98,19 @@ app.get('/zoneDegagement', (req, res) => {
     });
     res.render('zoneDegagement', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
 });
-
+app.get('/zoneConstruction', (req, res) => {
+    const videos = readJSON(VIDEOS_FILE);
+    // Grouper les vidéos par zone pour l’affichage rugby
+    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque","zoneEnbutAdverse"];
+    const videosByZone = {};
+    zones.forEach(zone => {
+        videosByZone[zone] = videos.filter(v => v.zone === zone);
+    });
+    res.render('zoneConstruction', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+});
+app.get('/terrain', isAuthenticated, (req, res) => {
+    res.render('terrain', { isAdmin: req.session.role === "admin", email: req.session.email });
+});
 
 // --- Section Admin : gestion des comptes ---
 app.get('/admin/users', isAuthenticated, isAdmin, (req, res) => {
@@ -162,6 +163,18 @@ app.post('/admin/videos/edit', isAuthenticated, isAdmin, (req, res) => {
     res.redirect('/admin/videos');
 });
 
+
+app.get('/videos', (req, res) => {
+    const videosDir = path.join(__dirname, 'public/videos');
+    fs.readdir(videosDir, (err, files) => {
+        if (err) {
+            return res.status(500).send('Erreur lors de la lecture des vidéos');
+        }
+        // Filtrer uniquement les fichiers .mp4
+        const videoFiles = files.filter(file => file.endsWith('.mp4'));
+        res.render('videos', { videos: videoFiles });
+    });
+});
 
 
 app.listen(PORT, () => console.log(`Serveur lancé sur http://localhost:${PORT}`));
