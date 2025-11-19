@@ -165,6 +165,14 @@ app.post('/admin/user/toggle', isAuthenticated, isAdmin, (req, res) => {
     writeJSON(USERS_FILE, users);
     res.redirect('/admin/users');
 });
+app.post('/admin/user/role', isAuthenticated, isAdmin, (req, res) => {
+    const { email } = req.body;
+    const users = readJSON(USERS_FILE);
+    const user = users.find(u => u.email === email);
+    if (user) user.role = (user.role === "admin" ? "joueur" : "admin");
+    writeJSON(USERS_FILE, users);
+    res.redirect('/admin/users');
+});
 app.post('/admin/user/delete', isAuthenticated, isAdmin, (req, res) => {
     const { email } = req.body;
     let users = readJSON(USERS_FILE);
@@ -215,6 +223,5 @@ app.get('/videos', (req, res) => {
         res.render('videos', { videos: videoFiles });
     });
 });
-
 
 app.listen(PORT, () => console.log(`Serveur lancé sur http://localhost:${PORT}`));
