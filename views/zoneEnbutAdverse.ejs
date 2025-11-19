@@ -36,7 +36,7 @@
         <!-- Navigation Links -->
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
-            <a href="/admin/videos"
+            <a href="/terrain"
               class="text-primary font-semibold px-3 py-2 rounded-md text-sm bg-primary-50">Vidéos</a>
             <a href="/admin/users"
               class="text-text-secondary hover:text-primary transition-smooth px-3 py-2 rounded-md text-sm">Gestion
@@ -90,23 +90,28 @@
 
   <!-- Header -->
   <div class="text-center mb-1">
-    <h1 class="text-3xl font-bold text-primary font-accent mb-4">Terrain de Rugby</h1>
-    <p class="text-lg text-text-secondary">Visualisation des vidéos par zone</p>
-    
+    <h1 class="text-3xl font-bold text-primary font-accent mb-4">Zone d'En-but Adverse</h1>
   </div>
-
  
-    <!-- Insérer une image -->
-  <div class="image-container">
-        <img src="fondTerrain.bmp" style="width:100%;">
-        
-        <button class="zone-btn zoneEnbutAdverse"><a href="/zoneEnbutAdverse"/>Zone En-but adverse</button>
-        <button class="zone-btn zoneMarque"><a href="/zoneMarque"/>Zone de marque</button>
-        <button class="zone-btn zoneConstruction"><a href="/zoneConstruction"/>Zone de construction</button>
-        <button class="zone-btn zoneNeutre"><a href="/zoneNeutre"/>Zone neutre</button>
-        <button class="zone-btn zoneDegagement"><a href="/zoneDegagement"/>Zone de dégagement</button>
-        <button class="zone-btn zoneEnbutCAL"><a href="/zoneEnbutCAL"/>Zone en-but CAL</button>
-        
+  <!-- Rugby Field Container -->
+  <div class="relative bg-surface rounded-xl shadow-rugby border border-border-light p-1 mb-1">
+    <table border="1">
+      <tr>
+        <td valign="top" >
+          <% videosByZone["zoneEnbutAdverse"].forEach(function(v){ %>
+            <div class="zoneVideo">
+              <p><b>
+                  <%= v.titre %>
+                </b><br>
+                <%= v.commentaire %>
+              </p>
+              <video src="/videos/<%= v.url %>" width="100%" controls controlsList="nodownload"></video>
+            </div>
+            <hr>
+            <% }) %>
+        </td>
+       </tr>
+    </table>
   </div>
 
   <div class="mt-4 px-4 py-2 bg-green-50 border border-green-200 rounded-lg inline-flex items-center">
@@ -115,7 +120,7 @@
           d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
       </svg>
       <span class="text-sm text-green-700 font-medium">Vidéos protégées - Visionnage uniquement</span>
-    </div>
+  </div>
 
   <script>
     document.querySelectorAll('video').forEach(function (v) {

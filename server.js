@@ -88,6 +88,16 @@ app.post('/register', (req, res) => {
 // --- Page de vidéos (joueur + admin) ---
 
 // Routes pour chaque zone
+app.get('/zoneEnbutCAL', (req, res) => {
+    const videos = readJSON(VIDEOS_FILE);
+    // Grouper les vidéos par zone pour l’affichage rugby
+    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque","zoneEnbutAdverse"];
+    const videosByZone = {};
+    zones.forEach(zone => {
+        videosByZone[zone] = videos.filter(v => v.zone === zone);
+    });
+    res.render('zoneEnbutCAL', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+});
 app.get('/zoneDegagement', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
     // Grouper les vidéos par zone pour l’affichage rugby
@@ -98,6 +108,16 @@ app.get('/zoneDegagement', (req, res) => {
     });
     res.render('zoneDegagement', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
 });
+app.get('/zoneNeutre', (req, res) => {
+    const videos = readJSON(VIDEOS_FILE);
+    // Grouper les vidéos par zone pour l’affichage rugby
+    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque","zoneEnbutAdverse"];
+    const videosByZone = {};
+    zones.forEach(zone => {
+        videosByZone[zone] = videos.filter(v => v.zone === zone);
+    });
+    res.render('zoneNeutre', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+});
 app.get('/zoneConstruction', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
     // Grouper les vidéos par zone pour l’affichage rugby
@@ -107,6 +127,26 @@ app.get('/zoneConstruction', (req, res) => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
     });
     res.render('zoneConstruction', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+});
+app.get('/zoneMarque', (req, res) => {
+    const videos = readJSON(VIDEOS_FILE);
+    // Grouper les vidéos par zone pour l’affichage rugby
+    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque","zoneEnbutAdverse"];
+    const videosByZone = {};
+    zones.forEach(zone => {
+        videosByZone[zone] = videos.filter(v => v.zone === zone);
+    });
+    res.render('zoneMarque', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+});
+app.get('/zoneEnbutAdverse', (req, res) => {
+    const videos = readJSON(VIDEOS_FILE);
+    // Grouper les vidéos par zone pour l’affichage rugby
+    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque","zoneEnbutAdverse"];
+    const videosByZone = {};
+    zones.forEach(zone => {
+        videosByZone[zone] = videos.filter(v => v.zone === zone);
+    });
+    res.render('zoneEnbutAdverse', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
 });
 app.get('/terrain', isAuthenticated, (req, res) => {
     res.render('terrain', { isAdmin: req.session.role === "admin", email: req.session.email });
