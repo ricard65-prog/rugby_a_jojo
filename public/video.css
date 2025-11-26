@@ -1,4 +1,3 @@
-
 table {
   text-indent: 0;
   /* 1 */
@@ -10,6 +9,7 @@ table {
   margin-right: auto;
   width: 100%;
 }
+
 th {
   font-weight: bold;
   text-align: left;
@@ -21,6 +21,7 @@ th {
   border-bottom-style: solid;
   /* 2 */
 }
+
 td {
   border-top-width: 1px;
   /* 1 */
@@ -32,31 +33,36 @@ td {
 }
 
 
-.zoneEnbutCAL{
+.zoneEnbutCAL {
   background-color: #6c6d39;
 }
-.zoneDegagement{
+
+.zoneDegagement {
   background-color: #6c6d34;
 }
-.zoneNeutre{
+
+.zoneNeutre {
   background-color: #6f8824;
 }
-.zoneConstruction{
+
+.zoneConstruction {
   background-color: #2d886f;
 }
-.zoneMarque{
+
+.zoneMarque {
   background-color: #388c3c;
 }
-.zoneEnbutAdverse{
+
+.zoneEnbutAdverse {
   background-color: #52c058;
 }
 
-.zoneVideo{
+.zoneVideo {
   background-color: #52c058;
   margin-bottom: 10px;
 }
 
-.titrezone{
+.titrezone {
   font-weight: bold;
   text-align: center;
   color: white;
@@ -64,63 +70,91 @@ td {
 
 
 .image-container {
-            position: relative;
-            width: 100%; /* largeur de l'image */
-              margin-left: auto;
+  position: relative;
+  width: 100%;
+  /* largeur de l'image */
+  margin-left: auto;
   margin-right: auto;
-        }
+  max-width: 500px;
+  /* largeur maximale */
+  width: 100%;
+  /* occupe toute la largeur disponible jusqu'à 1200px */
+  margin: 0 auto;
+  /* centrer le contenu */
 
-        .image-container img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-/*
-        .zone-btn {
-            position: absolute;
-            width: 100%;
-            height: 25%; /* 4 zones = 25% chacune *
-            left: 0;
-            background-color: rgba(0, 0, 255, 0.2); /* couleur semi-transparente *
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            color: white;
-        }*/
+}
 
-        /* Position des 4 boutons */
-        .zoneEnbutAdverse { top: 0%; height: 82px;  }     
-        .zoneMarque { top: 13%; height: 106px;  }
-        .zoneConstruction { top: 29%; height: 93px;  }
-        .zoneNeutre { top: 43%; height: 98px;  }
-        .zoneDegagement { top: 58%; height: 200px;  }
-        .zoneEnbutCAL { top: 88%; height: 50px;  }
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
-        /* Style commun à toutes les zones */
+/* Position des 4 boutons */
+.zoneEnbutAdverse {
+  top: 0%;
+  height: 82px;
+}
+
+.zoneMarque {
+  top: 13%;
+  height: 106px;
+}
+
+.zoneConstruction {
+  top: 29%;
+  height: 93px;
+}
+
+.zoneNeutre {
+  top: 43%;
+  height: 98px;
+}
+
+.zoneDegagement {
+  top: 58%;
+  height: 200px;
+}
+
+.zoneEnbutCAL {
+  top: 88%;
+  height: 50px;
+}
+
+/* Style commun à toutes les zones */
 .zone-btn {
   width: 100%;
-    
-position: absolute;
-    opacity: 0.3; /* Transparence initiale */
-    background-color: rgba(0, 128, 255, 0.3); /* Couleur semi-transparente */
-    border: 2px solid transparent; /* Bordure invisible par défaut */
-    color: #ff0202;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease; /* Animation fluide */
+
+  position: absolute;
+  opacity: 0.3;
+  /* Transparence initiale */
+  background-color: rgba(0, 128, 255, 0.3);
+  /* Couleur semi-transparente */
+  border: 2px solid transparent;
+  /* Bordure invisible par défaut */
+  color: #ff0202;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* Animation fluide */
 
 }
 
 /* Effet lors du clic */
 .zone-btn:active {
-    opacity: 0.7; /* Encore plus visible */
-    border-color: #ffcc00; /* Bordure jaune pour feedback */
-    transform: scale(1.05); /* Zoom léger pour indiquer le clic */
+  opacity: 0.7;
+  /* Encore plus visible */
+  border-color: #ffcc00;
+  /* Bordure jaune pour feedback */
+  transform: scale(1.05);
+  /* Zoom léger pour indiquer le clic */
 }
 
 /* Effet au survol */
 .zone-btn:hover {
-    opacity: 0.5; /* Augmente la visibilité */
-    border-color: #fff; /* Bordure blanche visible */
+  opacity: 0.5;
+  /* Augmente la visibilité */
+  border-color: #fff;
+  /* Bordure blanche visible */
 }

@@ -1,147 +1,188 @@
-
-.btn-primary{
+.btn-primary {
   background-color: rgb(50 130 246 / var(--tw-bg-opacity, 1));
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: rgb(51 192 255 / var(--tw-bg-opacity, 1));
 }
 
-.btn-primary:focus{
+.btn-primary:focus {
   --tw-ring-color: rgb(50 130 246 / var(--tw-ring-opacity, 1));
 
 }
-.usertab{
+
+.usertab {
   width: 400px;
 }
-.usertab2{
+
+.usertab2 {
   text-align: -webkit-center;
 }
-.btn-sav{
+
+.btn-sav {
   background-color: rgb(27 94 32 / var(--tw-bg-opacity, 1));
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.btn-sav:hover{
+.btn-sav:hover {
   background-color: rgb(56 142 60 / var(--tw-bg-opacity, 1));
 }
 
-.btn-sav:focus{
-   --tw-ring-color: rgb(76 175 80 / var(--tw-ring-opacity, 1));
+.btn-sav:focus {
+  --tw-ring-color: rgb(76 175 80 / var(--tw-ring-opacity, 1));
 }
-.btn-del{
+
+.btn-del {
   background-color: rgb(255 0 0 / var(--tw-bg-opacity, 1));
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-.btn-del:hover{
+.btn-del:hover {
   background-color: rgb(255 140 140 / var(--tw-bg-opacity, 1));
 }
 
-.btn-del:focus{
-   --tw-ring-color: rgb(255 0 0 / var(--tw-ring-opacity, 1));
+.btn-del:focus {
+  --tw-ring-color: rgb(255 0 0 / var(--tw-ring-opacity, 1));
 }
 
 
 
 
 .user-card {
-    display: flex;
-    flex-direction: column;
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 12px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .user-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .email {
-    font-weight: bold;
-    flex: 1;
+  font-weight: bold;
+  flex: 1;
 }
 
 .badge {
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 12px;
-    color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #fff;
 }
 
-.status_actif { background: #28a745; }
-.status_inactif { background: #ffc107; }
+.status_actif {
+  background: #28a745;
+}
 
-.role_admin { background: #007bff; color: #fff; }
-.role_joueur { background: #78b3ff; color: #fff; }
+.status_inactif {
+  background: #ffc107;
+}
+
+.role_admin {
+  background: #007bff;
+  color: #fff;
+}
+
+.role_joueur {
+  background: #78b3ff;
+  color: #fff;
+}
 
 
 .actions {
-    display: flex;
-    gap: 8px; /* espace entre les boutons */
-    justify-content: space-between; /* répartis sur la largeur */
-    padding: 5px;
+  display: flex;
+  gap: 8px;
+  /* espace entre les boutons */
+  justify-content: space-between;
+  /* répartis sur la largeur */
+  padding: 5px;
 }
 
 .actions form {
-    flex: 1; /* chaque form prend la même largeur */
-    display: flex; /* pour que le bouton occupe toute la largeur du form */
+  flex: 1;
+  /* chaque form prend la même largeur */
+  display: flex;
+  /* pour que le bouton occupe toute la largeur du form */
 }
 
 .actions button {
-    width: 100%; /* bouton prend toute la largeur du form */
-    padding: 2px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
+  width: 100%;
+  /* bouton prend toute la largeur du form */
+  padding: 2px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .btn {
-    flex: 1; /* Chaque bouton prend la même largeur */
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    height: 35px;
+  flex: 1;
+  /* Chaque bouton prend la même largeur */
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  height: 35px;
 }
 
-.deactivate { background: #ffe189; color: #000; }
-.role { background: #90c5fd; color: #fff; }
-.delete { background: #d67b84; color: #fff; }
+.deactivate {
+  background: #ffe189;
+  color: #000;
+}
+
+.role {
+  background: #90c5fd;
+  color: #fff;
+}
+
+.delete {
+  background: #d67b84;
+  color: #fff;
+}
 
 
 /* Responsive */
 @media (max-width: 600px) {
-    .actions {
-        flex-direction: row; /* Toujours côte à côte */
-    }
-    .btn {
-        font-size: 12px;
-        padding: 6px;
-    }
+  .actions {
+    flex-direction: row;
+    /* Toujours côte à côte */
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 6px;
+  }
 }
 
 
 .mon-user {
-    position: relative;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  max-width: 500px;
+  /* largeur maximale */
+  width: 100%;
+  /* occupe toute la largeur disponible jusqu'à 1200px */
+  margin: 0 auto;
+  /* centrer le contenu */
 }
 
 .mon-user::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #ccc; /* Ligne grise */
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  /* Ligne grise */
 }

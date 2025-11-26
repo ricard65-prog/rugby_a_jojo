@@ -143,6 +143,7 @@
      <% users.forEach(function(u){ %>
       <div class="mon-user">
     <div class="user-info">
+        <p class="email"><%= u.nom %> <%= u.prenom %></p>
         <p class="email"><%= u.email %></p>
         <span class="badge role_<%= u.role %>"><%= u.role %></span>
         <span class="badge status_<%= u.statut %>"><%= u.statut %></span>

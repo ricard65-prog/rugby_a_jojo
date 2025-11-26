@@ -96,6 +96,26 @@
     <!-- Login Form Card -->
     <div class="card p-8 shadow-rugby-card">
       <form method="POST" id="registrationForm" class="space-y-6">
+        <!-- Nom -->
+        <div class="relative">
+          <input type="nom" id="nom" name="nom" class="input-field peer placeholder-transparent" placeholder="Nom"
+            required />
+          <label for="nom"
+            class="absolute left-4 -top-2.5 bg-surface px-2 text-sm text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary">
+            Nom *
+          </label>
+        </div>
+
+        <!-- Prénom -->
+        <div class="relative">
+          <input type="prenom" id="prenom" name="prenom" class="input-field peer placeholder-transparent"
+            placeholder="prenom" required />
+          <label for="prenom"
+            class="absolute left-4 -top-2.5 bg-surface px-2 text-sm text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary">
+            Prénom *
+          </label>
+        </div>
+
         <!-- Email -->
         <div class="relative">
           <input type="email" id="email" name="email" class="input-field peer placeholder-transparent"

@@ -1,47 +1,63 @@
 [
   {
+    "nom": "Admin",
+    "prenom": "Site",
     "email": "admin@site.com",
     "password": "$2a$10$x1vb431vc84hFTl/kwSO5OAo6RfkEvmKcPieq1HKKysWlG7i..JGK",
     "statut": "actif",
     "role": "admin"
   },
   {
+    "nom": "ricard",
+    "prenom": "65",
     "email": "ricard65@gmail.com",
     "password": "$2a$10$x1vb431vc84hFTl/kwSO5OAo6RfkEvmKcPieq1HKKysWlG7i..JGK",
     "statut": "inactif",
     "role": "joueur"
   },
   {
+    "nom": "test",
+    "prenom": "test",
     "email": "test@essai.fr",
     "password": "$2a$10$CjF5U2GViVG9DkIz7V6.iuRJm8L/aNJpZ.Imn1rJv4hqlO/4OuHUa",
     "statut": "inactif",
     "role": "joueur"
   },
   {
+    "nom": "ee",
+    "prenom": "tt",
     "email": "ee@ee.de",
     "password": "$2a$10$HOm4/2iQdc6mpxBNqgb2JeJWdT13Ec0QTO3Um7/DfVgKgZ6ZgrFeu",
     "statut": "inactif",
     "role": "joueur"
   },
   {
+    "nom": "cc",
+    "prenom": "ccccc",
     "email": "cq@cc.c",
     "password": "$2a$10$M/ueI08OCnVh93dOO0XrWeitwSE4.6BAGMI0EbdShHv5wSkFRqlWO",
     "statut": "inactif",
     "role": "joueur"
   },
   {
+    "nom": "vvv",
+    "prenom": "v",
     "email": "vqvs@s.v",
     "password": "$2a$10$XiTRPbA1IbtJv09ZL6TtEeWJ1ZsDuAwixpSaKEDwXMmoJd/xWQ9JS",
     "statut": "inactif",
     "role": "joueur"
   },
   {
+    "nom": "vvvvvv",
+    "prenom": "bb",
     "email": "vds@vdsvdvsd.vd",
     "password": "$2a$10$jDuh14EChoVcjOfVQpjIMe20s/WGbLXbQQ9fY/Qy2MkzEpL7HZBM2",
     "statut": "inactif",
     "role": "joueur"
   },
   {
+    "nom": "ds",
+    "prenom": "sd",
     "email": "dsv@d.v",
     "password": "$2a$10$EPb/lvh.PVPWg8kXsg0eYOe0SkPqT/1ck8NuhS9oV0JopO//pZLXC",
     "statut": "inactif",
