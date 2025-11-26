@@ -122,7 +122,7 @@ app.post('/register', (req, res) => {
 app.get('/zoneEnbutCAL', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
     // Grouper les vidéos par zone pour l’affichage rugby
-    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque", "zoneEnbutAdverse"];
+    const zones = ["zoneEnbutCAL"];
     const videosByZone = {};
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
@@ -132,7 +132,7 @@ app.get('/zoneEnbutCAL', (req, res) => {
 app.get('/zoneDegagement', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
     // Grouper les vidéos par zone pour l’affichage rugby
-    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque", "zoneEnbutAdverse"];
+    const zones = ["zoneDegagement"];
     const videosByZone = {};
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
@@ -142,7 +142,7 @@ app.get('/zoneDegagement', (req, res) => {
 app.get('/zoneNeutre', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
     // Grouper les vidéos par zone pour l’affichage rugby
-    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque", "zoneEnbutAdverse"];
+    const zones = ["zoneNeutre"];
     const videosByZone = {};
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
@@ -152,7 +152,7 @@ app.get('/zoneNeutre', (req, res) => {
 app.get('/zoneConstruction', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
     // Grouper les vidéos par zone pour l’affichage rugby
-    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque", "zoneEnbutAdverse"];
+    const zones = ["zoneConstruction"];
     const videosByZone = {};
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
@@ -162,7 +162,7 @@ app.get('/zoneConstruction', (req, res) => {
 app.get('/zoneMarque', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
     // Grouper les vidéos par zone pour l’affichage rugby
-    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque", "zoneEnbutAdverse"];
+    const zones = ["zoneMarque"];
     const videosByZone = {};
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
@@ -172,7 +172,7 @@ app.get('/zoneMarque', (req, res) => {
 app.get('/zoneEnbutAdverse', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
     // Grouper les vidéos par zone pour l’affichage rugby
-    const zones = ["zoneEnbutCAL", "zoneDegagement", "zoneNeutre", "zoneConstruction", "zoneMarque", "zoneEnbutAdverse"];
+    const zones = ["zoneEnbutAdverse"];
     const videosByZone = {};
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
