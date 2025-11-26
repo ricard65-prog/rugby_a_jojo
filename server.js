@@ -71,6 +71,8 @@ app.post('/login', (req, res) => {
         return res.render('login', { error: "Compte inactif. Contactez l'administrateur." });
     }
     console.log('Compte autorisé :', email);
+    req.session.nom = user.nom;
+    req.session.prenom = user.prenom;
     req.session.email = user.email;
     req.session.role = user.role;
     req.session.statut = user.statut;
@@ -125,7 +127,7 @@ app.get('/zoneEnbutCAL', (req, res) => {
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
     });
-    res.render('zoneEnbutCAL', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+    res.render('zone', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email, nom: req.session.nom, prenom: req.session.prenom, zone: "zoneEnbutCAL", zoneTitle: "Zone En-but CAL" });
 });
 app.get('/zoneDegagement', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
@@ -135,7 +137,7 @@ app.get('/zoneDegagement', (req, res) => {
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
     });
-    res.render('zoneDegagement', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+    res.render('zone', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email, nom: req.session.nom, prenom: req.session.prenom, zone: "zoneDegagement", zoneTitle: "Zone de Dégagement" });
 });
 app.get('/zoneNeutre', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
@@ -145,7 +147,7 @@ app.get('/zoneNeutre', (req, res) => {
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
     });
-    res.render('zoneNeutre', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+    res.render('zone', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email, nom: req.session.nom, prenom: req.session.prenom, zone: "zoneNeutre", zoneTitle: "Zone Neutre" });
 });
 app.get('/zoneConstruction', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
@@ -155,7 +157,7 @@ app.get('/zoneConstruction', (req, res) => {
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
     });
-    res.render('zoneConstruction', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+    res.render('zone', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email, nom: req.session.nom, prenom: req.session.prenom, zone: "zoneConstruction", zoneTitle: "Zone de Construction" });
 });
 app.get('/zoneMarque', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
@@ -165,7 +167,7 @@ app.get('/zoneMarque', (req, res) => {
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
     });
-    res.render('zoneMarque', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+    res.render('zone', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email, nom: req.session.nom, prenom: req.session.prenom, zone: "zoneMarque", zoneTitle: "Zone de Marque" });
 });
 app.get('/zoneEnbutAdverse', (req, res) => {
     const videos = readJSON(VIDEOS_FILE);
@@ -175,10 +177,11 @@ app.get('/zoneEnbutAdverse', (req, res) => {
     zones.forEach(zone => {
         videosByZone[zone] = videos.filter(v => v.zone === zone);
     });
-    res.render('zoneEnbutAdverse', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email });
+    res.render('zone', { videosByZone, isAdmin: req.session.role === "admin", email: req.session.email, nom: req.session.nom, prenom: req.session.prenom, zone: "zoneEnbutAdverse", zoneTitle: "Zone En-but Adverse" });
 });
+
 app.get('/terrain', isAuthenticated, (req, res) => {
-    res.render('terrain', { isAdmin: req.session.role === "admin", email: req.session.email });
+    res.render('terrain', { isAdmin: req.session.role === "admin", email: req.session.email, nom: req.session.nom, prenom: req.session.prenom });
 });
 
 // --- Section Admin : gestion des comptes ---
