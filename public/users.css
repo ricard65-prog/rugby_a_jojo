@@ -149,6 +149,10 @@
   color: #fff;
 }
 
+.reset {
+  background: #8dd67b;
+  color: #fff;
+}
 
 /* Responsive */
 @media (max-width: 600px) {

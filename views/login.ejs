@@ -99,7 +99,7 @@
         <!-- Email Field -->
         <div class="relative">
           <input type="email" id="email" name="email" class="input-field peer placeholder-transparent"
-            placeholder="Adresse email" required />
+            onblur="checkPasswordStatus()" placeholder="Adresse email" required />
           <label for="email"
             class="absolute left-4 -top-2.5 bg-surface px-2 text-sm text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary">
             Adresse Email
@@ -120,6 +120,18 @@
             class="absolute left-4 -top-2.5 bg-surface px-2 text-sm text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary">
             Mot de Passe
           </label>
+        </div>
+
+        <!-- Confirm Password Field -->
+        <div id="confirm-container" style="display:none;">
+          <div class="relative">
+            <input type="password" id="confirmPassword" name="confirmPassword"
+              class="input-field peer placeholder-transparent" placeholder="Mot de passe" />
+            <label for="confirmPassword"
+              class="absolute left-4 -top-2.5 bg-surface px-2 text-sm text-text-secondary transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-text-secondary peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-primary">
+              Confirme Mot de Passe
+            </label>
+          </div>
         </div>
 
         <!-- Login Button -->
@@ -156,6 +168,32 @@
   </div>
 
 
+  <script>
+    function checkPasswordStatus() {
+      const email = document.getElementById('email').value;
+
+      fetch('/check-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email }) // ou simplement { email }
+      })
+
+        .then(response => response.json())
+        .then(data => {
+          const confirmContainer = document.getElementById('confirm-container');
+          if (data.passwordEmpty) {
+            confirmContainer.style.display = "block"; // Affiche confirmPassword
+            confirmContainer.removeAttribute('required', 'true');
+          } else {
+            confirmContainer.style.display = "none"; // Cache confirmPassword
+            confirmContainer.removeAttribute('required');
+          }
+        })
+        .catch(err => console.error(err));
+    }
+  </script>
 </body>
 
 </html>

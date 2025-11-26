@@ -48,19 +48,11 @@
     "role": "joueur"
   },
   {
-    "nom": "vvvvvv",
-    "prenom": "bb",
-    "email": "vds@vdsvdvsd.vd",
-    "password": "$2a$10$jDuh14EChoVcjOfVQpjIMe20s/WGbLXbQQ9fY/Qy2MkzEpL7HZBM2",
-    "statut": "inactif",
-    "role": "joueur"
-  },
-  {
-    "nom": "ds",
-    "prenom": "sd",
-    "email": "dsv@d.v",
-    "password": "$2a$10$EPb/lvh.PVPWg8kXsg0eYOe0SkPqT/1ck8NuhS9oV0JopO//pZLXC",
-    "statut": "inactif",
+    "nom": "aa",
+    "prenom": "a",
+    "email": "aa@site.com",
+    "password": "$2a$10$wOGVTZOp/pNCKQP6kMWIuetCn763a2t/xFQUs5ncTsDEPXPfB0ZK6",
+    "statut": "actif",
     "role": "joueur"
   }
 ]

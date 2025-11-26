@@ -12,6 +12,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 app.use(session({
     secret: 'monSecretSuperSecurise',
     resave: false,
@@ -51,7 +56,12 @@ app.post('/login', (req, res) => {
     const { email, password } = req.body;
     const users = readJSON(USERS_FILE);
     const user = users.find(u => u.email === email);
-
+    if (user.password === "") {
+        console.log('Mot de passe vide:', email);
+        const hashedPwd = bcrypt.hashSync(password, 10);
+        user.password = hashedPwd;
+        writeJSON(USERS_FILE, users);
+    }
     if (!user || !bcrypt.compareSync(password, user.password)) {
         console.log('Email ou mot de passe incorrect :', email);
         return res.render('login', { error: 'Email ou mot de passe incorrect.' });
@@ -67,6 +77,21 @@ app.post('/login', (req, res) => {
     return res.redirect('/terrain');
 });
 
+
+// Vérifier si le password est vide
+app.post('/check-password', (req, res) => {
+    const { email } = req.body;
+    console.log('Email reçu:', email);
+    const users = readJSON(USERS_FILE);
+    const user = users.find(u => u.email === email);
+    if (user.password === "") {
+        console.log('Confirme mot de passe.', email);
+        res.json({ "passwordEmpty": true });
+    } else {
+        res.json({ "passwordEmpty": false });
+    }
+});
+
 app.get('/logout', (req, res) => {
     req.session.destroy(() => res.redirect('/login'));
 });
@@ -74,13 +99,17 @@ app.get('/logout', (req, res) => {
 // --- Création de compte ---
 app.get('/register', (req, res) => res.render('register', { error: null }));
 app.post('/register', (req, res) => {
-    const { email, password } = req.body;
+    const { nom, prenom, email, password, confirmPassword } = req.body;
     const users = readJSON(USERS_FILE);
+    if (password !== confirmPassword) {
+        console.log('Mot de passe incorrect.');
+        return res.render('register', { error: 'Mot de passe incorrect.' });
+    }
     if (users.find(u => u.email === email)) {
         return res.render('register', { error: "Email déjà utilisé." });
     }
     const hashedPwd = bcrypt.hashSync(password, 10);
-    users.push({ email, password: hashedPwd, statut: "inactif", role: "joueur" });
+    users.push({ nom, prenom, email, password: hashedPwd, statut: "inactif", role: "joueur" });
     writeJSON(USERS_FILE, users);
     res.redirect('/login');
 });
@@ -170,6 +199,14 @@ app.post('/admin/user/role', isAuthenticated, isAdmin, (req, res) => {
     const users = readJSON(USERS_FILE);
     const user = users.find(u => u.email === email);
     if (user) user.role = (user.role === "admin" ? "joueur" : "admin");
+    writeJSON(USERS_FILE, users);
+    res.redirect('/admin/users');
+});
+app.post('/admin/user/reset', isAuthenticated, isAdmin, (req, res) => {
+    const { email } = req.body;
+    const users = readJSON(USERS_FILE);
+    const user = users.find(u => u.email === email);
+    user.password = "";
     writeJSON(USERS_FILE, users);
     res.redirect('/admin/users');
 });

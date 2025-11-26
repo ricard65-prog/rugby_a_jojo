@@ -67,7 +67,7 @@
                 d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             </svg></a>
 
-            <!-- Mobile menu button -->
+          <!-- Mobile menu button -->
           <button type="button" id="mobileMenuButton"
             class="text-text-secondary hover:text-primary focus:outline-none focus:text-primary transition-smooth">
             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -89,82 +89,50 @@
   <div class="text-center mb-1">
     <h1 class="text-3xl font-bold text-primary font-accent mb-4">Gestion des utilisateurs</h1>
   </div>
-<!--
-  <!-- Main Content -- >
-  <div class="overflow-y-auto usertab2">
-    <!-- Application Card 1 -- >
-    <div class="border border-border-light rounded-lg p-4 hover:shadow-rugby transition-all duration-300 usertab">
-      <% users.forEach(function(u){ %>
-        <div class="flex items-start justify-between padding-bottom: 10px; border-bottom: 1px solid #e0e0e0; mb-4 pb-4">
-          <div class="flex items-start space-x-4">
-            <div class="flex-1">
-              <h3 class="font-semibold text-primary">
-                <%= u.email %>
-              </h3>
-              <div class="flex items-center space-x-4 mt-2">
-                <span class="text-xs bg-primary-100 text-primary px-2 py-1 rounded-full">
-                  <%= u.role %>
-                </span>
-                <span class="text-xs text-text-secondary">
-                  <%= u.statut %>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="flex items-center space-x-2">
-            <form method="POST" action="/admin/user/toggle" style="display:inline">
-              <input type="hidden" name="email" value="<%= u.email %>">
-              <button type="submit" class="btn-primary text-sm px-4 py-2">
-                <%= u.statut==='actif' ? 'Désactiver' : 'Activer' %>
-              </button>
-            </form>
-          </div>
-          <div class="flex items-center space-x-2">
-            <form method="POST" action="/admin/user/role" style="display:inline">
-              <input type="hidden" name="email" value="<%= u.email %>">
-              <button type="submit" class="btn-primary text-sm px-4 py-2">
-                <%= u.role==='admin' ? 'Joueur' : 'Admin' %>
-              </button>
-            </form>
-          </div>
-          <form method="POST" action="/admin/user/delete" style="display:inline">
-            <input type="hidden" name="email" value="<%= u.email %>">
-            <button type="submit">Supprimer</button>
-          </form>
-        </div>
-        <% }) %>
-    </div>
-  </div>
-
-  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  *-->
 
   <div class="user-card">
-     <% users.forEach(function(u){ %>
+    <% users.forEach(function(u){ %>
       <div class="mon-user">
-    <div class="user-info">
-        <p class="email"><%= u.nom %> <%= u.prenom %></p>
-        <p class="email"><%= u.email %></p>
-        <span class="badge role_<%= u.role %>"><%= u.role %></span>
-        <span class="badge status_<%= u.statut %>"><%= u.statut %></span>
-    </div>
-    <div class="actions">
-      <form method="POST" action="/admin/user/toggle">
-          <input type="hidden" name="email" value="<%= u.email %>">
-          <button class="btn deactivate"><%= u.statut==='actif' ? 'Désactiver' : 'Activer' %></button>
-        </form>
-        <form method="POST" action="/admin/user/role">
-          <input type="hidden" name="email" value="<%= u.email %>">
-          <button class="btn role"><%= u.role==='admin' ? 'Joueur' : 'Admin' %></button>
-        </form>
-        <form method="POST" action="/admin/user/delete">
-          <input type="hidden" name="email" value="<%= u.email %>">
-          <button class="btn delete">🗑</button>
-        </form>
-    </div>
-    </div>
-     <% }) %>
-</div>
+        <div class="user-info">
+          <p class="email">
+            <%= u.nom %>
+              <%= u.prenom %>
+          </p>
+          <p class="email">
+            <%= u.email %>
+          </p>
+          <span class="badge role_<%= u.role %>">
+            <%= u.role %>
+          </span>
+          <span class="badge status_<%= u.statut %>">
+            <%= u.statut %>
+          </span>
+        </div>
+        <div class="actions">
+          <form method="POST" action="/admin/user/toggle">
+            <input type="hidden" name="email" value="<%= u.email %>">
+            <button class="btn deactivate">
+              <%= u.statut==='actif' ? 'Désactiver' : 'Activer' %>
+            </button>
+          </form>
+          <form method="POST" action="/admin/user/role">
+            <input type="hidden" name="email" value="<%= u.email %>">
+            <button class="btn role">
+              <%= u.role==='admin' ? 'Joueur' : 'Admin' %>
+            </button>
+          </form>
+          <form method="POST" action="/admin/user/reset">
+            <input type="hidden" name="email" value="<%= u.email %>">
+            <button class="btn reset">Reset</button>
+          </form>
+          <form method="POST" action="/admin/user/delete">
+            <input type="hidden" name="email" value="<%= u.email %>">
+            <button class="btn delete">🗑</button>
+          </form>
+        </div>
+      </div>
+      <% }) %>
+  </div>
 
   <script>
     /* Mobile menu toggle */
@@ -181,4 +149,5 @@
     });
   </script>
 </body>
+
 </html>
